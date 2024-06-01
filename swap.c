@@ -1,9 +1,10 @@
 #include "push_swap.h"
-static void	swap(t_stack_node **head)
+
+static void	swap(s_node **head)
 {
 	int	len;
 
-	len = stack_len(*head);
+	len = stack_size(*head);
 	if (NULL == *head || NULL == head || 1 == len)
 		return ;
 	*head = (*head)->next;
@@ -15,24 +16,25 @@ static void	swap(t_stack_node **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_stack_node	**a, bool checker)
+void	sa(s_node	**a, bool checker)
 {
 	swap(a);
 	if (!checker)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack_node **b, bool checker)
+void	sb(s_node **b, bool checker)
 {
 	swap(b);
 	if (!checker)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack_node **a, t_stack_node **b, bool checker)
+void	ss(s_node **a, s_node **b, bool checker)
 {
 	swap(a);
 	swap(b);
 	if (!checker)
 		write(1, "ss\n", 3);
 }
+

@@ -1,12 +1,12 @@
 #include"push_swap.h"
-static void add_node(t_stack_node **stack, int n)
+static void add_node(s_node **stack, int n)
 {
-	t_stack_node *node;
-	t_stack_node *last_node;
+	s_node *node;
+	s_node *last_node_f;
 
 	if (!stack)
 		return;
-	node = malloc(sizeof(t_stack_node));
+	node = malloc(sizeof(s_node));
 	if (!node)
 		return;
 	node->next = NULL;
@@ -18,9 +18,9 @@ static void add_node(t_stack_node **stack, int n)
 	}
 	else
 	{
-		last_node = find_last(*stack);
-		last_node->next = node;
-		node->prev = last_node;
+		last_node_f = last_node(*stack);
+		last_node_f->next = node;
+		node->prev = last_node_f;
 	}
 }
 
@@ -37,9 +37,7 @@ void	construct_stack_a(s_node **a, char **argv)
         {
            add_node(a, (int)n);
            i++;
-        }
-        
-        
+        }   
     }
 
 }

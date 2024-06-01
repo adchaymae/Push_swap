@@ -6,12 +6,8 @@
 
 typedef struct s_node
 {
-	int					nbr;
-	int					position;
-	int					count_cmd;
-	bool				above_median;
-	bool				cheapest;
-	struct s_node	*target_node;
+	int				nbr;
+	int				position;
 	struct s_node	*next;
 	struct s_node	*prev;
 } s_node;
@@ -22,13 +18,13 @@ void	free_stack(s_node **stack);
 int check_Input(s_node **a, char *argv);
 char	**ft_split(char *str);
 long	ft_atoi(const char *s);
-int	ft_isdigit(int c);
 int stack_size(s_node *a);
 s_node *last_node(s_node *stack);
 static void add_node(t_stack_node **stack, int n);
 void	free_stack(s_node **stack);
 void	construct_stack_a(s_node **a, char **argv);
-
+int	ft_min(s_node *a);
+int	ft_max(s_node *a);
 
 
 #endif

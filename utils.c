@@ -64,15 +64,6 @@ char	**ft_split(char *str)
 	return (arr);
 }
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-	{
-		return (1);
-	}
-	return (0);
-}
-
 long	ft_atoi(const char *s)
 {
 	long	result;
@@ -89,7 +80,7 @@ long	ft_atoi(const char *s)
 			sign = -1;
 		s++;
 	}
-	while (ft_isdigit(*s))
+	while (*s >= '0' && *s <= '9')
 		result = result * 10 + (*s++ - 48);
 	return (result * sign);
 }
@@ -119,7 +110,22 @@ s_node *last_node(s_node *stack)
     return (stack);
 }
 
-void (s_node **node) // ** we want to set the pointer to node to null to make sure that nothing exist
+int	ft_checksorted(s_node *stack_a)
+{
+	int	i;
+
+	i = stack_a->nbr;
+	while (stack_a)
+	{
+		if (i > stack_a->nbr)
+			return (0);
+		i = stack_a->nbr;
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
+void free_stack(s_node **node) // ** we want to set the pointer to node to null to make sure that nothing exist
 {
 	s_node *current;
 	s_node *tmp;
@@ -134,4 +140,78 @@ void (s_node **node) // ** we want to set the pointer to node to null to make su
 	}
 	*node = NULL;
 }
+int	ft_min(s_node *a)
+{
+	int		i;
+
+	i = a->nbr;
+	while (a)
+	{
+		if (a->nbr < i)
+			i = a->nbr;
+		a = a->next;
+	}
+	return (i);
+}
+
+int	ft_max(s_node *a)
+{
+	int		i;
+
+	i = a->nbr;
+	while (a)
+	{
+		if (a->nbr > i)
+			i = a->nbr;
+		a = a->next;
+	}
+	return (i);
+}
+
+int	get_position(s_node *a, int nbr)
+{
+	int		i;
+
+	i = 0;
+	while (a->nbr != nbr)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
+}
+
+int calculate_cost(s_node **a, s_node *current)
+{
+	int index;
+	int median ;
+	int cost;
+
+	median = stack_size(a)/2;
+	index = get_position(current, current->nbr);
+	if(median > index)
+	{
+		cost = index;
+	}
+	else
+	{
+		cost = median - index;
+	}
+	return(cost);
+
+}
+
+s_node *get_target(s_node **a, s_node *s)
+{
+
+}
+
+s_node *find_cheapest_move(s_node **a, s_node **b)
+{
+
+}
+
+
+
+
 
