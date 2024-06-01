@@ -203,7 +203,7 @@ int calculate_cost(s_node **a, s_node *current)
 
 s_node *get_target(s_node **a, s_node *s)
 {
-
+	
 }
 
 s_node *find_cheapest_move(s_node **a, s_node **b)
