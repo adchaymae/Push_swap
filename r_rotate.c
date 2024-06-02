@@ -1,40 +1,39 @@
 #include "push_swap.h"
 
-static void rotate(s_node **stack)
+static void	r_rotate(s_node **stack)
 {
-    s_node *last_node;
-    int len;
+	s_node	*last;
+	int				len;
 
-    len = stack_size(*stack);
-    if (stack == NULL || *stack == NULL || len == 1)
-        return;
-
-    last_node = last_node(*stack);
-    last_node->next = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
-    last_node->next->prev = last_node;
-    last_node->next->next = NULL;
+	len = stack_size(*stack);
+	if (NULL == *stack || NULL == stack || 1 == len)
+		return ;
+	last = last_node(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
-void ra(s_node **a, bool checker)
+void	rra(s_node **a, bool checker)
 {
-    rotate(a);
-    if (!checker)
-        write(1, "ra\n", 3);
+	r_rotate(a);
+	if (!checker)
+		write(1, "rra\n", 4);
 }
 
-void rb(s_node **b, bool checker)
+void	rrb(s_node **b, bool checker)
 {
-    rotate(b);
-    if (!checker)
-        write(1, "rb\n", 3);
+	r_rotate(b);
+	if (!checker)
+		write(1, "rrb\n", 4);
 }
 
-void rr(s_node **a, s_node **b, bool checker)
+void	rrr(s_node **a, s_node **b, bool checker)
 {
-    rotate(a);
-    rotate(b);
-    if (!checker)
-        write(1, "rr\n", 3);
+	r_rotate(a);
+	r_rotate(b);
+	if (!checker)
+		write(1, "rrr\n", 4);
 }

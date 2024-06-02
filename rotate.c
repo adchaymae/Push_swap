@@ -2,18 +2,18 @@
 
 static void	rotate(s_node **stack)
 {
-	s_node	*last_node;
+	s_node	*last_node_f;
 	int				len;
 
 	len = stack_size(*stack);
 	if (NULL == stack || NULL == *stack || 1 == len)
 		return ;
-	last_node = last_node(*stack);
-	last_node->next = *stack;
+	last_node_f = last_node(*stack);
+	last_node_f->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
-	last_node->next->prev = last_node;
-	last_node->next->next = NULL;
+	last_node_f->next->prev = last_node_f;
+	last_node_f->next->next = NULL;
 }	
 
 void	ra(s_node **a, bool checker)

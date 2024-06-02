@@ -2,7 +2,7 @@
 
 void sort_three(s_node **a)
 {
-    s_node *max_node = ft_max(*a);
+    s_node *max_node = ft_max_node(*a);
 
     if (max_node == *a)
     {
